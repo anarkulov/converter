@@ -1,11 +1,6 @@
 # Converter
+
 Simple converter for currencies and units of measurements
-===========
-
-Practice #6
-===========
-
-![Example](http://i.imgur.com/zi0NXL6.jpg)
 
 The application allows to convert from one
 unit of measurement to another. The application includes at least length,
