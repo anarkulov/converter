@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Converter</string>
+    <string name="massButtonTextRes">mass</string>
+    <string name="currencyButtonTextRes">currency</string>
+    <string name="lengthButtonTextRes">length</string>
+    <string name="currencyRateEditTextText">"Enter the rate value "</string>
+</resources>
