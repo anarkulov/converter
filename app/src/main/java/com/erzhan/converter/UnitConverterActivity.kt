@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.lang.NumberFormatException
 import java.util.*
 
-class UnitConverterActivity : AppCompatActivity() {
+class UnitConverterActivity : BaseActivity() {
 
     lateinit var firstValueEditText: EditText
     lateinit var secondValueEditText: EditText
@@ -21,7 +21,6 @@ class UnitConverterActivity : AppCompatActivity() {
     lateinit var firstValueSpinner: Spinner
     lateinit var secondValueSpinner: Spinner
     private lateinit var conversionUnitValues: TypedArray
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +64,7 @@ class UnitConverterActivity : AppCompatActivity() {
     }
 
     private fun convert() {
-        val firstValueText =firstValueEditText.text.toString()
+        val firstValueText = firstValueEditText.text.toString()
         if (firstValueText.trim {it <= ' '}.isEmpty()) {
             return
         }
@@ -82,37 +81,5 @@ class UnitConverterActivity : AppCompatActivity() {
         val toUnitValue = conversionUnitValues.getFloat(toIndex, 1.0f)
         val result = fromValue * fromUnitValue / toUnitValue
         secondValueEditText.setText(String.format(Locale.getDefault(), "0.2f", result))
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
-
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.lengthUnitConverterMenuItem -> {
-                val intent = Intent(this, UnitConverterActivity::class.java)
-                intent.putExtra("UNIT_CONVERSION_NAMES", R.array.lengthConversionUnitNames)
-                intent.putExtra("UNIT_CONVERSION_VALUES", R.array.lengthConversionValues)
-                startActivity(intent)
-                true
-            }
-            R.id.massUnitConverterMenuItem -> {
-                val intent = Intent(this, UnitConverterActivity::class.java)
-                intent.putExtra("UNIT_CONVERSION_NAMES", R.array.massConversionUnitNames)
-                intent.putExtra("UNIT_CONVERSION_VALUES", R.array.massConversionValues)
-                startActivity(intent)
-                true
-            }
-            R.id.currencyConverterMenuItem -> {
-                val intent = Intent(this, CurrencyConverterActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 }
