@@ -21,19 +21,21 @@
         android:id="@+id/firstValueSpinnerId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/firstValueEditTextId" />
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/firstValueEditTextId"
+        tools:layout_editor_absoluteX="16dp" />
 
     <EditText
         android:id="@+id/secondValueEditTextId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:inputType="textMultiLine|numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstValueSpinnerId" />
+        app:layout_constraintTop_toBottomOf="@+id/swapButtonId" />
 
     <Spinner
         android:id="@+id/secondValueSpinnerId"
@@ -43,5 +45,18 @@
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@+id/secondValueEditTextId"
         tools:layout_editor_absoluteX="0dp" />
+
+    <ImageButton
+        android:id="@+id/swapButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="swap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstValueSpinnerId"
+        app:srcCompat="@drawable/ic_switch_unit"
+        tools:ignore="VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

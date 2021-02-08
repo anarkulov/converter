@@ -1,16 +1,11 @@
 package com.erzhan.converter
 
-import android.content.Intent
 import android.content.res.TypedArray
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
-import java.lang.NumberFormatException
 import java.util.*
 
 class UnitConverterActivity : BaseActivity() {
@@ -27,7 +22,7 @@ class UnitConverterActivity : BaseActivity() {
         setContentView(R.layout.activity_unit_converter)
 
         firstValueEditText = findViewById(R.id.firstValueEditTextId)
-        firstValueEditText.addTextChangedListener(object: TextWatcher {
+        firstValueEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
@@ -48,14 +43,13 @@ class UnitConverterActivity : BaseActivity() {
 
         firstValueSpinner.onItemSelectedListener = onItemSelectedListener
         secondValueSpinner.onItemSelectedListener = onItemSelectedListener
-
         val intent = intent
         val unitNames = intent.getIntExtra("UNIT_CONVERSION_NAMES", -1)
         val unitValues = intent.getIntExtra("UNIT_CONVERSION_VALUES", -1)
         val adapter = ArrayAdapter.createFromResource(
-                this,
-                unitNames,
-                android.R.layout.simple_spinner_item
+            this,
+            unitNames,
+            android.R.layout.simple_spinner_item
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         firstValueSpinner.adapter = adapter
@@ -80,6 +74,11 @@ class UnitConverterActivity : BaseActivity() {
         val fromUnitValue = conversionUnitValues.getFloat(fromIndex, 1.0f)
         val toUnitValue = conversionUnitValues.getFloat(toIndex, 1.0f)
         val result = fromValue * fromUnitValue / toUnitValue
-        secondValueEditText.setText(String.format(Locale.getDefault(), "0.2f", result))
+        secondValueEditText.setText(String.format(Locale.getDefault(), "%.2f", result))
+    }
+    fun swap(view: View) {
+        val firstValueSpinnerTemp = firstValueSpinner.selectedItemPosition
+        firstValueSpinner.setSelection(secondValueSpinner.selectedItemPosition)
+        secondValueSpinner.setSelection(firstValueSpinnerTemp)
     }
 }
