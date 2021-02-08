@@ -28,11 +28,4 @@ class CurrencyConverterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_currency_converter)
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        val inflater = menuInflater
-//        inflater.inflate(R.menu.main_menu, menu)
-//
-//        return true
-//    }
 }
